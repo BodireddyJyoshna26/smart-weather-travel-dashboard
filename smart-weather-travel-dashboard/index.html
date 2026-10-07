@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Weather & Travel Dashboard using the Open-Meteo public weather API.">
+  <title>Smart Weather & Travel Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MODULE 3 • ES6+ JAVASCRIPT</p>
+        <h1>Smart Weather <span>&</span> Travel</h1>
+      </div>
+      <button id="locateBtn" class="ghost-btn" type="button">📍 Use My Location</button>
+    </header>
+
+    <main>
+      <section class="search-panel">
+        <form id="searchForm" class="search-form">
+          <label for="cityInput">Search weather by city</label>
+          <div class="search-row">
+            <input id="cityInput" name="city" type="text" placeholder="Enter a city, e.g. Chennai" autocomplete="off" required>
+            <button type="submit" class="primary-btn">Search</button>
+          </div>
+          <p id="errorMessage" class="error-message" role="alert"></p>
+        </form>
+        <div class="quick-cities" aria-label="Quick city search">
+          <button type="button" data-city="Chennai">Chennai</button>
+          <button type="button" data-city="Bengaluru">Bengaluru</button>
+          <button type="button" data-city="Mumbai">Mumbai</button>
+          <button type="button" data-city="Delhi">Delhi</button>
+          <button type="button" data-city="London">London</button>
+        </div>
+      </section>
+
+      <section id="loading" class="loading-card hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <p>Fetching the latest weather...</p>
+      </section>
+
+      <section id="dashboard" class="dashboard hidden">
+        <div class="hero-card">
+          <div class="hero-top">
+            <div>
+              <p class="muted">Current weather</p>
+              <h2 id="cityName">--</h2>
+              <p id="dateText" class="muted">--</p>
+            </div>
+            <div id="weatherIcon" class="weather-icon" aria-hidden="true">☀️</div>
+          </div>
+
+          <div class="temperature-row">
+            <div id="temperature" class="temperature">--°</div>
+            <div>
+              <p id="weatherDescription" class="condition">--</p>
+              <p id="feelsLike" class="muted">Feels like --°</p>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>💧</span>
+              <div><small>Humidity</small><strong id="humidity">--%</strong></div>
+            </article>
+            <article class="stat-card">
+              <span>💨</span>
+              <div><small>Wind</small><strong id="wind">-- km/h</strong></div>
+            </article>
+            <article class="stat-card">
+              <span>🌅</span>
+              <div><small>Sunrise</small><strong id="sunrise">--</strong></div>
+            </article>
+            <article class="stat-card">
+              <span>🌇</span>
+              <div><small>Sunset</small><strong id="sunset">--</strong></div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="travel-card">
+          <p class="eyebrow">SMART TRAVEL ADVICE</p>
+          <h2 id="travelTitle">Travel suggestion</h2>
+          <div id="travelIcon" class="travel-icon">🧳</div>
+          <p id="travelText">Search for a city to get a weather-based travel suggestion.</p>
+          <div class="packing">
+            <h3>What to pack</h3>
+            <ul id="packingList"></ul>
+          </div>
+        </aside>
+
+        <div class="forecast-card">
+          <div class="section-heading">
+            <div>
+              <p class="muted">Next few days</p>
+              <h2>5-Day Forecast</h2>
+            </div>
+          </div>
+          <div id="forecastGrid" class="forecast-grid"></div>
+        </div>
+      </section>
+
+      <section id="welcome" class="welcome-card">
+        <div class="welcome-icon">🌦️</div>
+        <h2>Plan your day with confidence</h2>
+        <p>Enter a city above to see live weather, a 5-day forecast, and a smart travel recommendation.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with ES6+ JavaScript • Open-Meteo Public Weather API • No API key required</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
